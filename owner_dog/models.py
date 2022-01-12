@@ -3,7 +3,7 @@ from django.db.models.deletion import CASCADE
 
 class Owner(models.Model):
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=300)
+    email = models.CharField(max_length=255, unique=True)
     age = models.IntegerField()
     
     class Meta:
