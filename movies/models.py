@@ -6,7 +6,8 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
 
-    db_table = 'actors'
+    class Meta:
+        db_table = 'actors'
 
 
 
@@ -16,11 +17,13 @@ class Movie(models.Model):
     runtime = models.IntegerField()
     actors = models.ManyToManyField(Actor, through='Actor_Movie')
 
-    db_table = 'movies'
+    class Meta:
+        db_table = 'movies'
 
 
 class Actor_Movie(models.Model):
     actor = models.ForeignKey(Actor, on_delete=CASCADE)
     movie = models.ForeignKey(Movie, on_delete=CASCADE)
 
-    db_table = 'actors_movies'
+    class Meta:
+        db_table = 'actors_movies'
